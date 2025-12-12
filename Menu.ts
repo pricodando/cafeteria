@@ -1,8 +1,8 @@
 import readlinesync = require("readline-sync");
 
-import { Produto } from './src/model/Produto';
-import { colors } from './src/util/Colors';
-import { ProdutoController } from './src/controller/ProdutoController';
+import { Produto } from "./model/Produto";
+import { colors } from "./src/util/Colors";
+import { ProdutoController } from "./controller/ProdutoController";
 
 export function main() {
 
@@ -10,15 +10,15 @@ export function main() {
 
     console.log("\nCriar Produtos de Teste\n");
 
-    let p1: Produto = new Produto(produtos.gerarId(), "Cappuccino", 15.00, 50, "2026-12-31");
+    let p1: Produto = new Produto(produtos.gerarId(), "Cappuccino", 15.00, 50,);
     produtos.cadastrar(p1);
 
-    let p2: Produto = new Produto(produtos.gerarId(), "Mocha V12", 20.00, 30, "2026-12-31");
+    let p2: Produto = new Produto(produtos.gerarId(), "Mocha V12", 20.00, 30,);
     produtos.cadastrar(p2);
 
     produtos.listarTodos();
 
-    let opcao, id, preco, quantidade, validade: number;
+    let opcao, id, preco, quantidade: number;
     let nome: string;
 
     const tiposProdutos = ['Café Quente', 'Café Gelado', 'Comida'];
@@ -29,8 +29,8 @@ export function main() {
         console.log("                                                           ");
         console.log("              CAFETERIA 'CODE AND COFFEE'                  ");
         console.log("                                                           ");
-        console.log("*"                                                          );
-        console.log("*");
+        console.log("***********************************************************");
+        console.log("***********************************************************");
 
         console.log("              1 - Cadastrar Novo Produto"                   );
         console.log("              2 - Listar todos os Produtos"                 );
@@ -42,8 +42,8 @@ export function main() {
         console.log("              8 - Transferir Estoque entre Setores"         );
         console.log("              9 - Sair"                                     );
         console.log("                                                           ");
-        console.log("*");
-        console.log("                                                           ");
+        console.log("***********************************************************");
+        console.log("***********************************************************");
         console.log("                                              ", colors.reset);
 
         console.log("Entre com a opção desejada: ");
@@ -76,7 +76,7 @@ export function main() {
                 let validadeInput = readlinesync.question("");
 
                 produtos.cadastrar(
-                    new Produto(produtos.gerarId(), nome, preco, quantidade, validadeInput)
+                    new Produto(produtos.gerarId(), nome, preco, quantidade)
                 );
 
                 keyPress();
@@ -104,37 +104,104 @@ export function main() {
                 break;
 
             case 4:
+                
                 console.log(colors.fg.yellow,
                     "\n\nAtualizar dados do Produto\n\n", colors.reset);
+                
+                console.log("Digite o ID do Produto para atualizar: ");
+                id = readlinesync.questionInt("");
+
+                let produtoAtualizar = produtos.buscarNoArray(id);
+
+                if (produtoAtualizar !== null) {
+                    console.log("Digite o Novo Nome do Produto: ");
+                    nome = readlinesync.question("");
+
+                    console.log("Digite o Novo Preço do Produto (R$): ");
+                    preco = readlinesync.questionFloat("");
+
+                    console.log("Digite a Nova Quantidade em Estoque: ");
+                    quantidade = readlinesync.questionInt("");
+                    
+                    console.log("Digite a Nova Validade (AAAA-MM-DD): ");
+                    validadeInput = readlinesync.question("");
+
+                    let novoProduto = new Produto(id, nome, preco, quantidade);
+                    
+                    produtos.atualizar(novoProduto);
+
+                } else {
+                  
+                    produtos.procurarPorId(id); 
+                }
 
                 keyPress();
                 break;
 
             case 5:
+                
                 console.log(colors.fg.yellow,
                     "\n\nApagar um Produto\n\n", colors.reset);
+                
+                console.log("Digite o ID do Produto a ser Apagado: ");
+                id = readlinesync.questionInt("");
+
+                produtos.deletar(id);
 
                 keyPress();
                 break;
 
             case 6:
+               
                 console.log(colors.fg.yellow,
                     "\n\nDar Baixa no Estoque (Venda)\n\n", colors.reset);
+                
+                console.log("Digite o ID do Produto: ");
+                id = readlinesync.questionInt("");
 
+                console.log("Digite a Quantidade Vendida/Baixada: ");
+                quantidade = readlinesync.questionInt("");
+
+                produtos.darBaixa(id, quantidade);
+                
                 keyPress();
                 break;
 
             case 7:
+                
                 console.log(colors.fg.yellow,
                     "\n\nDar Entrada no Estoque (Compra)\n\n", colors.reset);
+                
+                console.log("Digite o ID do Produto: ");
+                id = readlinesync.questionInt("");
+
+                console.log("Digite a Quantidade Comprada/Recebida: ");
+                quantidade = readlinesync.questionInt("");
+
+                produtos.darEntrada(id, quantidade);
 
                 keyPress();
                 break;
 
             case 8:
+                
                 console.log(colors.fg.yellow,
                     "\n\nTransferência de Estoque entre Setores\n\n", colors.reset);
 
+                let idOrigem: number;
+                let idDestino: number;
+
+                console.log("Digite o ID do Produto de Origem: ");
+                idOrigem = readlinesync.questionInt("");
+
+                console.log("Digite o ID do Produto de Destino: ");
+                idDestino = readlinesync.questionInt("");
+
+                console.log("Digite a Quantidade a ser Transferida: ");
+                quantidade = readlinesync.questionInt("");
+
+                produtos.transferirEstoque(idOrigem, idDestino, quantidade);
+                
                 keyPress();
                 break;
 
