@@ -72,9 +72,6 @@ export function main() {
                 console.log("Digite a Quantidade Inicial em Estoque: ");
                 quantidade = readlinesync.questionInt("");
 
-                console.log("Digite a Validade (AAAA-MM-DD): ");
-                let validadeInput = readlinesync.question("");
-
                 produtos.cadastrar(
                     new Produto(produtos.gerarId(), nome, preco, quantidade)
                 );
@@ -122,9 +119,6 @@ export function main() {
 
                     console.log("Digite a Nova Quantidade em Estoque: ");
                     quantidade = readlinesync.questionInt("");
-                    
-                    console.log("Digite a Nova Validade (AAAA-MM-DD): ");
-                    validadeInput = readlinesync.question("");
 
                     let novoProduto = new Produto(id, nome, preco, quantidade);
                     
