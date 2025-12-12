@@ -26,24 +26,24 @@ export function main() {
     while (true) {
 
         console.log(colors.bg.black, colors.fg.yellow, "*");
-        console.log("                                                         ");
-        console.log("              CAFETERIA 'CODE AND COFFEE'                ");
-        console.log("                                                         ");
+        console.log("                                                           ");
+        console.log("              CAFETERIA 'CODE AND COFFEE'                  ");
+        console.log("                                                           ");
+        console.log("*"                                                          );
         console.log("*");
-        console.log("                                                         ");
 
-        console.log(" 1 - Cadastrar Novo Produto"                              );
-        console.log(" 2 - Listar todos os Produtos"                            );
-        console.log(" 3 - Buscar Produto por ID"                               );
-        console.log(" 4 - Atualizar Dados do Produto"                          );
-        console.log(" 5 - Apagar Produto"                                      );
-        console.log(" 6 - Dar Baixa no Estoque (Venda)"                        );
-        console.log(" 7 - Dar Entrada no Estoque (Compra)"                     );
-        console.log(" 8 - Transferir Estoque entre Setores"                    );
-        console.log(" 9 - Sair"                                                );
-        console.log(" "                                                        );
-
+        console.log("              1 - Cadastrar Novo Produto"                   );
+        console.log("              2 - Listar todos os Produtos"                 );
+        console.log("              3 - Buscar Produto por ID"                    );
+        console.log("              4 - Atualizar Dados do Produto"               );
+        console.log("              5 - Apagar Produto"                           );
+        console.log("              6 - Dar Baixa no Estoque (Venda)"             );
+        console.log("              7 - Dar Entrada no Estoque (Compra)"          );
+        console.log("              8 - Transferir Estoque entre Setores"         );
+        console.log("              9 - Sair"                                     );
+        console.log("                                                           ");
         console.log("*");
+        console.log("                                                           ");
         console.log("                                              ", colors.reset);
 
         console.log("Entre com a opção desejada: ");
@@ -60,7 +60,7 @@ export function main() {
         switch (opcao) {
 
             case 1:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\n\nCadastrar Produto\n\n", colors.reset);
 
                 console.log("Digite o Nome do Produto: ");
@@ -83,7 +83,7 @@ export function main() {
                 break;
 
             case 2:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\n\nListar todos os Produtos\n\n", colors.reset);
 
                 produtos.listarTodos();
@@ -92,7 +92,7 @@ export function main() {
                 break;
 
             case 3:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\n\nConsultar dados do Produto - por ID\n\n", colors.reset);
 
                 console.log("Digite o ID do Produto: ");
@@ -104,42 +104,42 @@ export function main() {
                 break;
 
             case 4:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\n\nAtualizar dados do Produto\n\n", colors.reset);
 
                 keyPress();
                 break;
 
             case 5:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\n\nApagar um Produto\n\n", colors.reset);
 
                 keyPress();
                 break;
 
             case 6:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\n\nDar Baixa no Estoque (Venda)\n\n", colors.reset);
 
                 keyPress();
                 break;
 
             case 7:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\n\nDar Entrada no Estoque (Compra)\n\n", colors.reset);
 
                 keyPress();
                 break;
 
             case 8:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\n\nTransferência de Estoque entre Setores\n\n", colors.reset);
 
                 keyPress();
                 break;
 
             default:
-                console.log(colors.fg.whitestrong,
+                console.log(colors.fg.yellow,
                     "\nOpção Inválida!\n", colors.reset);
 
                 keyPress();
